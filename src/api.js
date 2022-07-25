@@ -13,8 +13,36 @@ export const fetchUsers = () => {
     });
 };
 
-const testFn = async () => {
-    const res = await fetchUsers();
-    console.log(res);
-}
+export const fetchTopics = () => {
+  return axios
+    .get(baseURL + "/topics")
+    .then((response) => {
+      return response.data.topics;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
 
+export const fetchArticles = () => {
+  return axios
+    .get(baseURL + "/articles")
+    .then((response) => {
+      return response.data.articles;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
+
+
+export const fetchArticlesByTopic = (topic) => {
+  return axios
+    .get(baseURL + `/articles?topic=${topic}`)
+    .then((response) => {
+      return response.data.articles;
+    })
+    .catch((err) => {
+      return err;
+    });
+};

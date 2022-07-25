@@ -4,14 +4,15 @@ import { activeUsernameContext } from "./contexts/activeUsernameContext";
 
 import Login from "./components/Login";
 import { useEffect, useState } from "react";
-import { fetchUsers } from "./api";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
-import Topics from "./components/Topics";
+import { fetchTopics, fetchUsers } from "./api";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Topbar from "./components/Topbar";
+import Topics from "./components/Topics";
 
 function App() {
   const [activeUsername, setActiveUsername] = useState("");
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]); // array of usernames
+  const [topics, setTopics] = useState([]); // array of topic slugs
 
   useEffect(() => {
     fetchUsers().then((users) => {
@@ -19,6 +20,17 @@ function App() {
         const newArr = [];
         users.forEach((u) => {
           newArr.push(u.username);
+        });
+        return newArr;
+      });
+    });
+  }, []);
+  useEffect(() => {
+    fetchTopics().then((topics) => {
+      setTopics(() => {
+        const newArr = [];
+        topics.forEach((t) => {
+          newArr.push(t.slug);
         });
         return newArr;
       });
@@ -34,7 +46,7 @@ function App() {
           <Topbar />
           <Routes>
             <Route path="/" element={<Login users={users} />} />
-            <Route path="/topics" element={<Topics />} />
+            <Route path="/articles" element={<Topics topics={topics}/>} />
           </Routes>
         </div>
       </BrowserRouter>

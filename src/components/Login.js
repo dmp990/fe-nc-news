@@ -15,8 +15,8 @@ export default function Login({ users }) {
   const navigate = useNavigate();
   const handleFormSubmission = (e) => {
     e.preventDefault();
-    setActiveUsername(() => selectedUsername);
-    navigate("/topics");
+    setActiveUsername(selectedUsername);
+    navigate("/articles");
   };
 
   return (
@@ -42,7 +42,11 @@ export default function Login({ users }) {
         <button type="submit" disabled={!canSubmit}>
           Log in
         </button>
-        {!canSubmit ? <p class="form-error">Please select a user to log in</p> : <></>}
+        {!canSubmit ? (
+          <p className="form-error">Please select a user to log in</p>
+        ) : (
+          <></>
+        )}
       </form>
     </div>
   );

@@ -17,3 +17,18 @@ button {
 .form-error {
   color: red;
 }
+
+.article_card {
+  display: block;
+  margin: 55px;
+  cursor: pointer;
+  border: 1px solid pink;
+}
+
+.article_card_author,
+.article_card_created_at,
+.article_card_topic,
+.article_card_comment_count,
+.article_card_votes {
+  font-size: 11px;
+}
