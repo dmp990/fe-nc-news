@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import { activeUsernameContext } from "./contexts/activeUsernameContext";
+
+import Login from "./components/Login";
+import { useEffect, useState } from "react";
+import { fetchUsers } from "./api";
+import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import Topics from "./components/Topics";
+import Topbar from "./components/Topbar";
 
 function App() {
+  const [activeUsername, setActiveUsername] = useState("");
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetchUsers().then((users) => {
+      setUsers(() => {
+        const newArr = [];
+        users.forEach((u) => {
+          newArr.push(u.username);
+        });
+        return newArr;
+      });
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <activeUsernameContext.Provider
+      value={{ activeUsername, setActiveUsername }}
+    >
+      <BrowserRouter>
+        <div className="App">
+          <Topbar />
+          <Routes>
+            <Route path="/" element={<Login users={users} />} />
+            <Route path="/topics" element={<Topics />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </activeUsernameContext.Provider>
   );
 }
 
