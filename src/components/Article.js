@@ -7,18 +7,24 @@ export default function Article() {
 
   const [article, setArticle] = useState({});
   const [err, setErr] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchArticleById(article_id)
       .then((response) => {
+        setLoading(false);
         setErr(null);
         setArticle(response);
       })
       .catch((error) => {
+        setLoading(false);
         setErr(error);
       });
   }, [article_id]);
 
+  if (loading) {
+    return <p>loading...</p>;
+  }
   if (err) {
     return (
       <section>
