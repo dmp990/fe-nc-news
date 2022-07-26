@@ -15,22 +15,20 @@ export default function ArticleCard({
     navigate("/articles/" + article_id);
   };
   return (
-    <div
+    <section
       className="article_card"
       onClick={() => {
         handleClick(article_id);
       }}
     >
-      <div className="article_card_title">{title}</div>
-      <div className="article_card_author">By: {author}</div>
-      <div className="article_card_created_at">
+      <h3 className="article_card_title">{title}</h3>
+      <p className="article_card_author">By: {author}</p>
+      <p className="article_card_created_at">
         Created on: {created_at.slice(0, 10)}
-      </div>
-      <div className="article_card_topic">Topic: {topic}</div>
-      <div className="article_card_comment_count">
-        Comments: {comment_count}
-      </div>
-      <div className="article_card_votes">Votes: {votes}</div>
-    </div>
+      </p>
+      <p className="article_card_topic">Topic: {topic}</p>
+      <p className="article_card_comment_count">Comments: {comment_count}</p>
+      <p className="article_card_votes">Votes: {votes}</p>
+    </section>
   );
 }

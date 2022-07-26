@@ -11,7 +11,7 @@ export default function Topics({ topics }) {
     navigate(`/topics/${selectedTopic}`);
   };
   return (
-    <div>
+    <section>
       <form onSubmit={handleFormSubmission}>
         <label>
           Topic:{" "}
@@ -33,7 +33,7 @@ export default function Topics({ topics }) {
           Apply Filter
         </button>
       </form>
-      <ShowArticles showAll="true" topics={topics}/>
-    </div>
+      <ShowArticles showAll="true" topics={topics} />
+    </section>
   );
 }

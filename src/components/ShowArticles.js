@@ -21,21 +21,19 @@ export default function ShowArticles({ showAll }) {
   }, []);
 
   return (
-    <div>
-      <div className="article">
-        {articles.map((article) => (
-          <ArticleCard
-            key={article.article_id}
-            title={article.title}
-            article_id={article.article_id}
-            author={article.author}
-            created_at={article.created_at}
-            topic={article.topic}
-            comment_count={article.comment_count}
-            votes={article.votes}
-          />
-        ))}
-      </div>
-    </div>
+    <section className="article">
+      {articles.map((article) => (
+        <ArticleCard
+          key={article.article_id}
+          title={article.title}
+          article_id={article.article_id}
+          author={article.author}
+          created_at={article.created_at}
+          topic={article.topic}
+          comment_count={article.comment_count}
+          votes={article.votes}
+        />
+      ))}
+    </section>
   );
 }

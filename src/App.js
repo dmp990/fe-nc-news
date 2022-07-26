@@ -46,9 +46,10 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <Topbar />
+
           <Routes>
             <Route path="/" element={<Login users={users} />} />
-            <Route path="/topics" element={<Topics topics={topics} />} />
+            <Route path="/articles" element={<Topics topics={topics} />} />
             <Route path="/topics/:topic" element={<ShowArticles />} />
             <Route path="/articles/:article_id" element={<Article />} />
           </Routes>
