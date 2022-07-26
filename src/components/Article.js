@@ -6,12 +6,26 @@ export default function Article() {
   const { article_id } = useParams();
 
   const [article, setArticle] = useState({});
+  const [err, setErr] = useState(null);
 
   useEffect(() => {
-    fetchArticleById(article_id).then((response) => {
-      setArticle(response);
-    });
+    fetchArticleById(article_id)
+      .then((response) => {
+        setErr(null);
+        setArticle(response);
+      })
+      .catch((error) => {
+        setErr(error);
+      });
   }, [article_id]);
+
+  if (err) {
+    return (
+      <section>
+        <p>{err.response.request.status}: {err.response.data.msg}!</p>
+      </section>
+    );
+  }
 
   return (
     <div>

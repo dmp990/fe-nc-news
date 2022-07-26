@@ -47,12 +47,7 @@ export const fetchArticlesByTopic = (topic) => {
 };
 
 export const fetchArticleById = (id) => {
-  return axios
-    .get(baseURL + `/articles/${id}`)
-    .then((response) => {
-      return response.data.article;
-    })
-    .catch((err) => {
-      return err;
-    });
+  return axios.get(baseURL + `/articles/${id}`).then((response) => {
+    return response.data.article;
+  });
 };
