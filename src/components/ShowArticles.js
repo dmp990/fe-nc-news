@@ -27,6 +27,7 @@ export default function ShowArticles({ showAll }) {
           <ArticleCard
             key={article.article_id}
             title={article.title}
+            article_id={article.article_id}
             author={article.author}
             created_at={article.created_at}
             topic={article.topic}
