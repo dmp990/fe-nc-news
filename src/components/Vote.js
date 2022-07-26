@@ -4,6 +4,7 @@ import { patchArticleById } from "../api";
 export default function Vote({ votes, article_id }) {
   const [currVotes, setCurrVotes] = useState(votes);
   const [errorUpdatingVote, setErrorUpdatingVote] = useState(null);
+  const [hasVoted, setHasVoted] = useState(false);
 
   return (
     <div>
@@ -14,11 +15,14 @@ export default function Vote({ votes, article_id }) {
           patchArticleById(article_id, 1)
             .then(() => {
               setErrorUpdatingVote(null);
+              setHasVoted(true);
             })
             .catch((err) => {
+              setHasVoted(false);
               setErrorUpdatingVote(err);
             });
         }}
+        disabled={hasVoted}
       >
         👍
       </button>
@@ -29,13 +33,15 @@ export default function Vote({ votes, article_id }) {
           setCurrVotes((v) => v - 1);
           patchArticleById(article_id, -1)
             .then(() => {
+              setHasVoted(true);
               setErrorUpdatingVote(null);
             })
             .catch((err) => {
+              setHasVoted(false);
               setErrorUpdatingVote(err);
             });
         }}
-        disabled={currVotes === 0}
+        disabled={currVotes === 0 || hasVoted}
       >
         👎
       </button>
