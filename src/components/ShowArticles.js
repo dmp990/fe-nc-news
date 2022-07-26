@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchArticles, fetchArticlesByTopic } from "../api";
+import { fetchArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 import TopicsForm from "./TopicsForm";
 
@@ -10,15 +10,9 @@ export default function ShowArticles({ showAll, topics }) {
   const { topic } = useParams();
 
   useEffect(() => {
-    if (topic === undefined) {
-      fetchArticles().then((articles) => {
-        setArticles(articles);
-      });
-    } else {
-      fetchArticlesByTopic(topic).then((articles) => {
-        setArticles(articles);
-      });
-    }
+    fetchArticles(topic).then((articles) => {
+      setArticles(articles);
+    });
   }, [topic]);
 
   return (

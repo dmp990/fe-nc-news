@@ -24,20 +24,9 @@ export const fetchTopics = () => {
     });
 };
 
-export const fetchArticles = () => {
+export const fetchArticles = (topic) => {
   return axios
-    .get(baseURL + "/articles")
-    .then((response) => {
-      return response.data.articles;
-    })
-    .catch((err) => {
-      return err;
-    });
-};
-
-export const fetchArticlesByTopic = (topic) => {
-  return axios
-    .get(baseURL + `/articles?topic=${topic}`)
+    .get(baseURL + "/articles", { params: { topic: topic } })
     .then((response) => {
       return response.data.articles;
     })
