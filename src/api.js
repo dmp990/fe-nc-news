@@ -40,3 +40,12 @@ export const fetchArticleById = (id) => {
     return response.data.article;
   });
 };
+
+//PATCH /api/articles/:article_id"
+export const patchArticleById = (id, vote) => {
+  return axios
+    .patch(baseURL + `/articles/${id}`, { inc_votes: vote })
+    .then((response) => {
+      return response.data.article;
+    });
+};

@@ -43,7 +43,7 @@ export default function Login({ users }) {
           Log in
         </button>
         {!canSubmit ? (
-          <p className="form-error">Please select a user to log in</p>
+          <p className="error-msg">Please select a user to log in</p>
         ) : (
           <></>
         )}
