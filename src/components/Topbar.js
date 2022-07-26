@@ -6,8 +6,12 @@ export default function Topbar() {
   const { activeUsername } = useContext(activeUsernameContext);
   return (
     <div>
-      <Link to="/">Home</Link>
-      Logged in as: {activeUsername}
+      <Link className="top-nav-link" to="/">
+        Home
+      </Link>
+      <Link className="top-nav-link" to="/topics">
+        Topics
+      </Link>
     </div>
   );
 }

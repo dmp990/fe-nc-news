@@ -13,6 +13,9 @@ button {
   cursor: pointer;
   padding-left: 15px;
 }
+button:disabled {
+  cursor: auto;
+}
 
 .form-error {
   color: red;
@@ -31,4 +34,10 @@ button {
 .article_card_comment_count,
 .article_card_votes {
   font-size: 11px;
+}
+
+.top-nav-link {
+  padding: 5px;
+  margin: 5px;
+  text-decoration: none;
 }

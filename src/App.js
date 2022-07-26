@@ -8,6 +8,7 @@ import { fetchTopics, fetchUsers } from "./api";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Topbar from "./components/Topbar";
 import Topics from "./components/Topics";
+import ShowArticles from "./components/ShowArticles";
 
 function App() {
   const [activeUsername, setActiveUsername] = useState("");
@@ -46,7 +47,8 @@ function App() {
           <Topbar />
           <Routes>
             <Route path="/" element={<Login users={users} />} />
-            <Route path="/articles" element={<Topics topics={topics}/>} />
+            <Route path="/topics" element={<Topics topics={topics} />} />
+            <Route path="/topics/:topic" element={<ShowArticles />} />
           </Routes>
         </div>
       </BrowserRouter>

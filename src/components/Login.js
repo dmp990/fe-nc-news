@@ -16,7 +16,7 @@ export default function Login({ users }) {
   const handleFormSubmission = (e) => {
     e.preventDefault();
     setActiveUsername(selectedUsername);
-    navigate("/articles");
+    navigate("/topics");
   };
 
   return (
