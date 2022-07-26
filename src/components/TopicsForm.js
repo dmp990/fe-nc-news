@@ -1,19 +1,17 @@
-import React from "react";
-import ShowArticles from "./ShowArticles";
-import TopicsForm from "./TopicsForm";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Topics({ topics }) {
+export default function TopicsForm({ topics }) {
+  const [selectedTopic, setSelectedTopic] = useState();
+
+  const navigate = useNavigate();
+  const handleFormSubmission = (e) => {
+    e.preventDefault();
+    navigate(`/topics/${selectedTopic}`);
+  };
   return (
     <section>
-      {/*here goes form*/}
-      <TopicsForm topics={topics} />
-      <ShowArticles showAll={true} topics={topics} />
-    </section>
-  );
-}
-
-/*
-<form onSubmit={handleFormSubmission}>
+      <form onSubmit={handleFormSubmission}>
         <label>
           Topic:{" "}
           <select
@@ -34,4 +32,6 @@ export default function Topics({ topics }) {
           Apply Filter
         </button>
       </form>
-      */
+    </section>
+  );
+}
