@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchArticleById } from "../api";
+import Vote from "./Vote";
 
 export default function Article() {
   const { article_id } = useParams();
@@ -53,17 +54,7 @@ export default function Article() {
               article.created_at.slice(11, 19)
             : article.created_at}
         </p>
-        <button className="thumbsup-button">👍</button>
-        {article.votes}
-        <button
-          className="thumbsup-button"
-          onClick={() => {
-            console.log("clicked");
-          }}
-          disabled={article.votes === 0}
-        >
-          👎
-        </button>
+        <Vote votes={article.votes} article_id={article_id} />
       </footer>
     </article>
   );
