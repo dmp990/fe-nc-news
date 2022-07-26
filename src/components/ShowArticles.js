@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { fetchArticles, fetchArticlesByTopic } from "../api";
 import ArticleCard from "./ArticleCard";
 
-export default function ShowArticles({ selectedTopic }) {
+export default function ShowArticles({ showAll }) {
   const [articles, setArticles] = useState([]);
 
+  const { topic } = useParams();
+
   useEffect(() => {
-    if (selectedTopic === "all" || selectedTopic === undefined) {
+    if (topic === undefined || showAll) {
       fetchArticles().then((articles) => {
         setArticles(articles);
       });
     } else {
-      fetchArticlesByTopic(selectedTopic).then((articles) => {
+      fetchArticlesByTopic(topic).then((articles) => {
         setArticles(articles);
       });
     }
-  }, [selectedTopic]);
+  }, []);
 
   return (
     <div>

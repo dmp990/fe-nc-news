@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ShowArticles from "./ShowArticles";
 
 export default function Topics({ topics }) {
   const [selectedTopic, setSelectedTopic] = useState();
 
+  const navigate = useNavigate();
   const handleFormSubmission = (e) => {
     e.preventDefault();
+    navigate(`/topics/${selectedTopic}`);
   };
   return (
     <div>
@@ -23,8 +26,14 @@ export default function Topics({ topics }) {
             ))}
           </select>
         </label>
+        <button
+          type="submit"
+          disabled={selectedTopic === "all" || selectedTopic === undefined}
+        >
+          Apply Filter
+        </button>
       </form>
-      <ShowArticles selectedTopic={selectedTopic} />
+      <ShowArticles showAll="true" topics={topics}/>
     </div>
   );
 }
