@@ -24,9 +24,9 @@ export const fetchTopics = () => {
     });
 };
 
-export const fetchArticles = () => {
+export const fetchArticles = (topic) => {
   return axios
-    .get(baseURL + "/articles")
+    .get(baseURL + "/articles", { params: { topic: topic } })
     .then((response) => {
       return response.data.articles;
     })
@@ -35,14 +35,8 @@ export const fetchArticles = () => {
     });
 };
 
-
-export const fetchArticlesByTopic = (topic) => {
-  return axios
-    .get(baseURL + `/articles?topic=${topic}`)
-    .then((response) => {
-      return response.data.articles;
-    })
-    .catch((err) => {
-      return err;
-    });
+export const fetchArticleById = (id) => {
+  return axios.get(baseURL + `/articles/${id}`).then((response) => {
+    return response.data.article;
+  });
 };

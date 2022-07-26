@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Topbar from "./components/Topbar";
 import Topics from "./components/Topics";
 import ShowArticles from "./components/ShowArticles";
+import Article from "./components/Article";
 
 function App() {
   const [activeUsername, setActiveUsername] = useState("");
@@ -45,10 +46,15 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <Topbar />
+
           <Routes>
             <Route path="/" element={<Login users={users} />} />
-            <Route path="/topics" element={<Topics topics={topics} />} />
-            <Route path="/topics/:topic" element={<ShowArticles />} />
+            <Route path="/articles" element={<Topics topics={topics} />} />
+            <Route
+              path="/topics/:topic"
+              element={<ShowArticles showAll={false} topics={topics} />}
+            />
+            <Route path="/articles/:article_id" element={<Article />} />
           </Routes>
         </div>
       </BrowserRouter>

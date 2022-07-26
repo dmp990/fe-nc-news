@@ -16,11 +16,11 @@ export default function Login({ users }) {
   const handleFormSubmission = (e) => {
     e.preventDefault();
     setActiveUsername(selectedUsername);
-    navigate("/topics");
+    navigate("/articles");
   };
 
   return (
-    <div>
+    <section>
       <form onSubmit={handleFormSubmission}>
         <label>
           Username:{" "}
@@ -48,6 +48,6 @@ export default function Login({ users }) {
           <></>
         )}
       </form>
-    </div>
+    </section>
   );
 }

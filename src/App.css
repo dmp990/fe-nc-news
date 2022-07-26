@@ -1,8 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 * {
   background-color: black;
   color: pink;
   font-family: "Space Mono", monospace;
+  font-weight: 700;
 }
 
 .App {
@@ -40,4 +41,30 @@ button:disabled {
   padding: 5px;
   margin: 5px;
   text-decoration: none;
+}
+
+.article-container {
+  margin: 5rem;
+}
+
+.article-title {
+  font-size: 2em;
+}
+
+.article-author-name, .article-created-at {
+  font-size: 0.7em;
+  font-weight: 400;
+  margin-bottom: 1.3em;
+}
+
+.article-body {
+  font-weight: 400;
+  font-size: 1.1em;
+  margin-bottom: 1.3em;
+}
+
+.thumbsup-button, .thumbsdown-button {
+  padding: 0.8em;
+  margin: 0.9em;
+  border: none;
 }

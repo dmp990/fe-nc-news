@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Topbar() {
   return (
-    <div>
+    <nav>
       <Link className="top-nav-link" to="/">
         Home
       </Link>
-      <Link className="top-nav-link" to="/topics">
-        All Articles
+      <Link className="top-nav-link" to="/articles">
+        Articles
       </Link>
-    </div>
+    </nav>
   );
 }
