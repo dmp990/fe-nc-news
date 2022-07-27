@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import { postCommentByArticleId } from "../api";
 import { activeUsernameContext } from "../contexts/activeUsernameContext";
+import ShowComments from "./ShowComments";
 
-export default function AddComment({ article_id, setCommentAdded }) {
+export default function AddComment({ article_id }) {
   const { activeUsername } = useContext(activeUsernameContext);
 
   const [comment, setComment] = useState("");
@@ -25,11 +26,16 @@ export default function AddComment({ article_id, setCommentAdded }) {
   };
 
   if (activeUsername === "") {
-    return <p className="error-msg">please log in to post a comment</p>;
+    return (
+      <>
+        <p className="error-msg">please log in to post a comment</p>
+        <section>
+          <ShowComments article_id={article_id} status={status} />
+        </section>
+      </>
+    );
   }
-  if (posted) {
-    setCommentAdded(() => true);
-  }
+
   return (
     <article className="add-comment-container">
       <form className="add-comment-form" onSubmit={handleSubmit}>
@@ -48,6 +54,7 @@ export default function AddComment({ article_id, setCommentAdded }) {
         </button>
       </form>
       {posted ? <p>posted</p> : <></>}
+      <ShowComments article_id={article_id} status={status} />
     </article>
   );
 }

@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { fetchCommentsByArticleId } from "../api";
-import AddComment from "./AddComment";
 
-export default function ShowComments({ article_id }) {
+export default function ShowComments({ article_id, status }) {
   const [comments, setComments] = useState([]);
   const [show, setShow] = useState(false);
-  const [commentAdded, setCommentAdded] = useState(false);
 
   useEffect(() => {
     fetchCommentsByArticleId(article_id).then((response) => {
-      const sorted = response.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      const sorted = response.sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at)
+      );
       setComments(() => sorted);
     });
-    setCommentAdded(false);
-  }, [article_id, commentAdded]);
+  }, [article_id, status]);
+
+  useEffect(() => {
+    if (status === "posted") {
+      setShow(true);
+    }
+  }, [status]);
 
   return (
     <section>
-      <AddComment article_id={article_id} setCommentAdded={setCommentAdded} />
-
       <article className="all-comments">
         {
           <button
