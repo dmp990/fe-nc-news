@@ -56,3 +56,18 @@ export const fetchCommentsByArticleId = (id) => {
     return response.data.comments;
   });
 };
+
+// POST /api/articles/:article_id/comments"
+/* examplePostBody": {
+        "username": "butter_bridge",
+        "body": "Hakuna Matata"
+      },
+*/
+
+export const postCommentByArticleId = (id, username, body) => {
+  return axios
+    .post(baseURL + `/articles/${id}/comments`, { username, body })
+    .then((response) => {
+      return response.data.comment;
+    });
+};

@@ -60,7 +60,7 @@ export default function Article() {
         </footer>
       </article>
       <section className={"comments-container"}>
-        <ShowComments article_id={article.article_id} />
+        <ShowComments article_id={article.article_id} called_from="article"/>
       </section>
     </section>
   );
