@@ -49,3 +49,10 @@ export const patchArticleById = (id, vote) => {
       return response.data.article;
     });
 };
+
+// GET /api/articles/:article_id/comments"
+export const fetchCommentsByArticleId = (id) => {
+  return axios.get(baseURL + `/articles/${id}/comments`).then((response) => {
+    return response.data.comments;
+  });
+};

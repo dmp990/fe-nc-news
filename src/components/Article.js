@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchArticleById } from "../api";
+import ShowComments from "./ShowComments";
 import Vote from "./Vote";
 
 export default function Article() {
@@ -37,25 +38,30 @@ export default function Article() {
   }
 
   return (
-    <article className="article-container">
-      <header>
-        <h1 className="article-title">{article.title}</h1>
-      </header>
-      <p className="article-author-name">Author: {article.author}</p>
-      <section>
-        <p className="article-body">{article.body}</p>
+    <section>
+      <article className="article-container">
+        <header>
+          <h1 className="article-title">{article.title}</h1>
+        </header>
+        <p className="article-author-name">Author: {article.author}</p>
+        <section>
+          <p className="article-body">{article.body}</p>
+        </section>
+        <footer>
+          <p className="article-created-at">
+            Created on:{" "}
+            {article.created_at
+              ? article.created_at.slice(0, 10) +
+                " " +
+                article.created_at.slice(11, 19)
+              : article.created_at}
+          </p>
+          <Vote votes={article.votes} article_id={article.article_id} />
+        </footer>
+      </article>
+      <section className={"comments-container"}>
+        <ShowComments article_id={article.article_id} />
       </section>
-      <footer>
-        <p className="article-created-at">
-          Created on:{" "}
-          {article.created_at
-            ? article.created_at.slice(0, 10) +
-              " " +
-              article.created_at.slice(11, 19)
-            : article.created_at}
-        </p>
-        <Vote votes={article.votes} article_id={article_id} />
-      </footer>
-    </article>
+    </section>
   );
 }
