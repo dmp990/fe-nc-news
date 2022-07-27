@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 * {
   background-color: black;
   color: pink;
@@ -51,7 +51,8 @@ button:disabled {
   font-size: 2em;
 }
 
-.article-author-name, .article-created-at {
+.article-author-name,
+.article-created-at {
   font-size: 0.7em;
   font-weight: 400;
   margin-bottom: 1.3em;
@@ -63,8 +64,28 @@ button:disabled {
   margin-bottom: 1.3em;
 }
 
-.thumbsup-button, .thumbsdown-button {
+.thumbsup-button,
+.thumbsdown-button {
   padding: 0.8em;
   margin: 0.9em;
   border: none;
+}
+
+.comment-container {
+  margin: 5rem;
+}
+
+.comment-body {
+  font-size: 0.9em;
+  font-weight: 400;
+  text-align: justify;
+  background-color: rgb(40,40,40);
+}
+.comment-author {
+  font-size: 0.7em;
+  font-weight: 400;
+}
+.comment-created-at {
+  font-size: 0.7em;
+  font-weight: 400;
 }
