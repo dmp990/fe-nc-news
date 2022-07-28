@@ -13,15 +13,19 @@ export default function AddComment({ article_id }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setStatus("posting");
-    postCommentByArticleId(article_id, activeUsername, comment)
-      .then((comment) => {
-        setPosted(() => true);
-        setStatus(() => "posted");
-      })
-      .catch(() => {
-        setPosted(() => false);
-        setStatus(() => "posted");
-      });
+    if (comment !== "") {
+      postCommentByArticleId(article_id, activeUsername, comment)
+        .then((comment) => {
+          setPosted(() => true);
+          setStatus(() => "posted");
+          setComment("");
+        })
+        .catch(() => {
+          setPosted(() => false);
+          setComment("");
+          setStatus(() => "posted");
+        });
+    }
   };
 
   if (activeUsername === "") {
@@ -40,9 +44,11 @@ export default function AddComment({ article_id }) {
       <form className="add-comment-form" onSubmit={handleSubmit}>
         <textarea
           placeholder="Remember, be nice!"
+          value={comment}
           onChange={(e) => {
             setComment(e.target.value);
           }}
+          required
         ></textarea>
         <button
           type="submit"

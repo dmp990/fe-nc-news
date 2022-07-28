@@ -43,6 +43,11 @@ function App() {
     <activeUsernameContext.Provider
       value={{ activeUsername, setActiveUsername }}
     >
+      {activeUsername === "" ? (
+        <p className="error-msg login-info">not logged in</p>
+      ) : (
+        <p className="login-info">logged in as: {activeUsername}</p>
+      )}
       <BrowserRouter>
         <div className="App">
           <Topbar />
