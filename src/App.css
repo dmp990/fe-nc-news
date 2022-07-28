@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu+Mono&display=swap");
 * {
   background-color: black;
   color: pink;
@@ -13,6 +13,7 @@
 button {
   cursor: pointer;
   padding-left: 15px;
+  padding-right: 15px;
 }
 button:disabled {
   cursor: auto;
@@ -66,8 +67,8 @@ button:disabled {
 
 .thumbsup-button,
 .thumbsdown-button {
-  padding: 0.8em;
-  margin: 0.9em;
+  padding: 1em;
+  margin: 0.2em;
   border: none;
 }
 
@@ -79,7 +80,7 @@ button:disabled {
   font-size: 0.9em;
   font-weight: 400;
   text-align: justify;
-  background-color: rgb(40,40,40);
+  background-color: rgb(40, 40, 40);
 }
 .comment-author {
   font-size: 0.7em;
@@ -88,4 +89,24 @@ button:disabled {
 .comment-created-at {
   font-size: 0.7em;
   font-weight: 400;
+}
+
+.add-comment-container {
+  margin-bottom: 3rem;
+}
+textarea {
+  background-color: rgb(40, 40, 40);
+  font-size: 0.9em;
+  width: 40rem;
+  height: 5rem;
+  padding: 5px;
+  border-radius: 5px;
+}
+.button-post-comment {
+  display: block;
+  margin: 1em auto;
+}
+.login-info {
+  text-align: center;
+  font-family: 'Ubuntu Mono', monospace;
 }

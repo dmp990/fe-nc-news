@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchArticleById } from "../api";
+import AddComment from "./AddComment";
 import ShowComments from "./ShowComments";
 import Vote from "./Vote";
 
@@ -60,7 +61,7 @@ export default function Article() {
         </footer>
       </article>
       <section className={"comments-container"}>
-        <ShowComments article_id={article.article_id} />
+        <AddComment article_id={article.article_id} />
       </section>
     </section>
   );

@@ -52,7 +52,27 @@ export const patchArticleById = (id, vote) => {
 
 // GET /api/articles/:article_id/comments"
 export const fetchCommentsByArticleId = (id) => {
-  return axios.get(baseURL + `/articles/${id}/comments`).then((response) => {
-    return response.data.comments;
-  });
+  return axios
+    .get(baseURL + `/articles/${id}/comments?limit=5000`)
+    .then((response) => {
+      return response.data.comments;
+    });
+};
+
+// POST /api/articles/:article_id/comments"
+/* examplePostBody": {
+        "username": "butter_bridge",
+        "body": "Hakuna Matata"
+      },
+*/
+
+export const postCommentByArticleId = (id, username, body) => {
+  return axios
+    .post(baseURL + `/articles/${id}/comments`, {
+      username: username,
+      body: body,
+    })
+    .then((response) => {
+      return response.data.comment;
+    });
 };
