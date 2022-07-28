@@ -15,7 +15,6 @@ export default function AddComment({ article_id }) {
     setStatus("posting");
     postCommentByArticleId(article_id, activeUsername, comment)
       .then((comment) => {
-        console.log(comment.comment_id, " posted");
         setPosted(() => true);
         setStatus(() => "posted");
       })
