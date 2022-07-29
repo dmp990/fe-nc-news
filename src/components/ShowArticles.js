@@ -9,22 +9,37 @@ export default function ShowArticles({ showAll, topics }) {
   const [articles, setArticles] = useState([]);
   const [sort_by, setSort_by] = useState("created_at");
   const [order, setOrder] = useState("desc"); // desc, asc -> desc by default
+  const [err, setErr] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const { topic } = useParams();
 
   useEffect(() => {
     setLoading(true);
-    fetchArticles({ topic, sort_by, order }).then((articles) => {
-      setLoading(false);
-      setArticles(articles);
-    });
+    fetchArticles({ topic, sort_by, order })
+      .then((articles) => {
+        setLoading(false);
+        setArticles(articles);
+        setErr(null);
+      })
+      .catch((err) => {
+        setLoading(false);
+        setErr(err);
+      });
   }, [topic, sort_by, order]);
 
   if (loading) {
     return <Loading />;
   }
-
+  if (err) {
+    return (
+      <section>
+        <p>
+          {err.response.request.status}: {err.response.data.msg}!
+        </p>
+      </section>
+    );
+  }
   return (
     <>
       {topic !== "undefined" && showAll === false ? (
