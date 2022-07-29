@@ -23,6 +23,7 @@ function App() {
         users.forEach((u) => {
           newArr.push(u.username);
         });
+        setActiveUsername(newArr[0]);
         return newArr;
       });
     });
