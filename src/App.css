@@ -74,6 +74,9 @@ button:disabled {
 
 .comment-container {
   margin: 5rem;
+  border: solid pink 0.1em;
+  border-radius: 0.3rem;
+  padding: 0.4em;
 }
 
 .comment-body {
@@ -108,5 +111,8 @@ textarea {
 }
 .login-info {
   text-align: center;
-  font-family: 'Ubuntu Mono', monospace;
+  font-family: "Ubuntu Mono", monospace;
+}
+.delete-btn {
+  color: #ff4b3cff;
 }
