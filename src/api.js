@@ -24,20 +24,6 @@ export const fetchTopics = () => {
     });
 };
 
-/*
-"GET /api/articles": {
-      "description": "serves an array of all articles",
-      "queries": [
-        "author",
-        "topic",
-        "sort_by",
-        "order",
-        "limit",
-        "p"
-      ],
-     
-  ];
-*/
 export const fetchArticles = ({
   topic,
   sort_by = "created_at",
@@ -80,12 +66,6 @@ export const fetchCommentsByArticleId = (id) => {
 };
 
 // POST /api/articles/:article_id/comments"
-/* examplePostBody": {
-        "username": "butter_bridge",
-        "body": "Hakuna Matata"
-      },
-*/
-
 export const postCommentByArticleId = (id, username, body) => {
   return axios
     .post(baseURL + `/articles/${id}/comments`, {
@@ -95,4 +75,11 @@ export const postCommentByArticleId = (id, username, body) => {
     .then((response) => {
       return response.data.comment;
     });
+};
+
+//DELETE /api/comments/:comment_id"
+export const deleteCommentByCommentId = (comment_id) => {
+  return axios.delete(baseURL + `/comments/${comment_id}`).then(() => {
+    return;
+  });
 };
