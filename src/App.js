@@ -56,7 +56,7 @@ function App() {
             <Route path="/" element={<Login users={users} />} />
             <Route path="/articles" element={<Topics topics={topics} />} />
             <Route
-              path="/topics/:topic"
+              path="articles/topics/:topic"
               element={<ShowArticles showAll={false} topics={topics} />}
             />
             <Route path="/articles/:article_id" element={<Article />} />

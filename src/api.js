@@ -24,9 +24,29 @@ export const fetchTopics = () => {
     });
 };
 
-export const fetchArticles = (topic) => {
+/*
+"GET /api/articles": {
+      "description": "serves an array of all articles",
+      "queries": [
+        "author",
+        "topic",
+        "sort_by",
+        "order",
+        "limit",
+        "p"
+      ],
+     
+  ];
+*/
+export const fetchArticles = ({
+  topic,
+  sort_by = "created_at",
+  order = "desc",
+}) => {
   return axios
-    .get(baseURL + "/articles", { params: { topic: topic } })
+    .get(baseURL + "/articles", {
+      params: { topic, limit: 5000, sort_by, order },
+    })
     .then((response) => {
       return response.data.articles;
     })
