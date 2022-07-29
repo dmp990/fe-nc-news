@@ -10,6 +10,7 @@ import Topbar from "./components/Topbar";
 import Topics from "./components/Topics";
 import ShowArticles from "./components/ShowArticles";
 import Article from "./components/Article";
+import WrongPath from "./components/WrongPath";
 
 function App() {
   const [activeUsername, setActiveUsername] = useState("");
@@ -23,6 +24,7 @@ function App() {
         users.forEach((u) => {
           newArr.push(u.username);
         });
+        setActiveUsername(newArr[0]);
         return newArr;
       });
     });
@@ -60,6 +62,7 @@ function App() {
               element={<ShowArticles showAll={false} topics={topics} />}
             />
             <Route path="/articles/:article_id" element={<Article />} />
+            <Route path="*" element={<WrongPath />} />
           </Routes>
         </div>
       </BrowserRouter>

@@ -35,9 +35,6 @@ export const fetchArticles = ({
     })
     .then((response) => {
       return response.data.articles;
-    })
-    .catch((err) => {
-      return err;
     });
 };
 
