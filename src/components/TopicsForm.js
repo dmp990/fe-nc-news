@@ -7,7 +7,7 @@ export default function TopicsForm({ topics }) {
   const navigate = useNavigate();
   const handleFormSubmission = (e) => {
     e.preventDefault();
-    navigate(`/topics/${selectedTopic}`);
+    navigate(`/articles/topics/${selectedTopic}`);
   };
   return (
     <section>
@@ -15,6 +15,7 @@ export default function TopicsForm({ topics }) {
         <label>
           Topic:{" "}
           <select
+            value={selectedTopic}
             onChange={(e) => {
               setSelectedTopic(() => e.target.value);
             }}

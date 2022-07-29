@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchArticleById } from "../api";
 import AddComment from "./AddComment";
-import ShowComments from "./ShowComments";
+import Loading from "./Loading";
 import Vote from "./Vote";
 
 export default function Article() {
@@ -26,7 +26,7 @@ export default function Article() {
   }, [article_id]);
 
   if (loading) {
-    return <p>loading...</p>;
+    return <Loading />;
   }
   if (err) {
     return (
