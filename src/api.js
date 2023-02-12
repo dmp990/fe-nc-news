@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const baseURL = "https://asads-news-server.herokuapp.com/api";
+const baseURL = "https://be-nc-news-jtlp.onrender.com/api";
 
 export const fetchUsers = () => {
   return axios
