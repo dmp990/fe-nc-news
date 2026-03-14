@@ -3,12 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { activeUsernameContext } from "../contexts/activeUsernameContext";
 
 export default function Login({ users }) {
-  const { activeUsername, setActiveUsername } = useContext(
-    activeUsernameContext
-  );
+  const { setActiveUsername } = useContext(activeUsernameContext);
 
   const [selectedUsername, setSelectedUsername] = useState(
-    "--select an option--"
+    "--select an option--",
   );
   const [canSubmit, setCanSubmit] = useState(false);
 
