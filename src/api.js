@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "axios";
 
 const baseURL = "https://be-nc-news-jtlp.onrender.com/api";
 
